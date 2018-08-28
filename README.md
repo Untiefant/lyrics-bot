@@ -1,3 +1,3 @@
-# lyrics-bot
+
 # requirements: 
-# nodejs, snoowrap, snoostorm, snekfetch
+nodejs, snoowrap, snoostorm, snekfetch
