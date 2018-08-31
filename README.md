@@ -1,3 +1,5 @@
 
-# requirements: 
-nodejs, snoowrap, snoostorm, snekfetch
+
+# todo:
+- AUTO RESTART BOT EVERY FEW HOURS 
+- RESTART BOT WHEN IT GRABS AN UNEXPECTED ERROR
