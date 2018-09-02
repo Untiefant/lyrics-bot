@@ -1,5 +1,3 @@
-
-
-# todo:
-- AUTO RESTART BOT EVERY FEW HOURS 
-- RESTART BOT WHEN IT GRABS AN UNEXPECTED ERROR
+#todo:
+- find any issues
+- bot is finished until we add new features
