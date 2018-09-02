@@ -1,6 +1,7 @@
 let snekfetch   = require('snekfetch');
 const Snoowrap  = require('snoowrap');
 const Snoostorm = require('snoostorm');
+let pm2         = require('pm2');
 require('dotenv').config();
 
 const e = new Snoowrap({
@@ -13,7 +14,7 @@ const e = new Snoowrap({
 const rClient = new Snoostorm(e);
 
 const streamOpts = {
-	subreddit: 'lyricsbot',
+	subreddit: 'all',
 	results: 100
 };
 
@@ -35,7 +36,10 @@ comments.on('comment', (comment) => {
 		'Authorization': `Bearer ${process.env.GENIUS}` 
 	}
 
-}).then(r => {
+}).catch(function(err) {
+	if (err) throw err;
+})
+.then(r => {
 	try {
 		let song = JSON.parse(JSON.stringify(r.body)) // fetched song
 		
@@ -45,3 +49,14 @@ comments.on('comment', (comment) => {
 		}
 	} 
 })}});
+
+
+pm2.connect(function(err) {
+	if (err) throw err;
+
+	setTimeout(function restart() {
+		console.log('Reloading bot at '  + new Date());
+	pm2.restart('app', function() {});
+		setTimeout(restart, 3600000);
+	}, 3600000);
+});
