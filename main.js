@@ -49,14 +49,3 @@ comments.on('comment', (comment) => {
 		}
 	} 
 })}});
-
-
-pm2.connect(function(err) {
-	if (err) throw err;
-
-	setTimeout(function restart() {
-		console.log('Reloading bot at '  + new Date());
-	pm2.restart('app', function() {});
-		setTimeout(restart, 3600000);
-	}, 3600000);
-});
